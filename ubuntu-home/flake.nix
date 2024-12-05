@@ -25,6 +25,7 @@
           ./git.nix
           ./zsh.nix
           ./docker-rootless.nix
+          ./k3d.nix
         ];
 
         # Optionally use extraSpecialArgs
