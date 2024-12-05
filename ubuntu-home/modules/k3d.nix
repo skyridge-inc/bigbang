@@ -23,13 +23,13 @@ in {
       default = "${config.home.homeDirectory}/.local/bin";
       description = "Directory to place the k3d binary.";
     };
-  };
 
     useSudo = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = "Determines using sudo to install k3d installation script";
     };
+  };
 
   config = lib.mkIf cfg.enable {
     # Ensure curl and bash are available
