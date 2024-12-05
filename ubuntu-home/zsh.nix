@@ -10,6 +10,7 @@
         shellAliases = {
             ll = "ls -l";
             update = "sudo nixos-rebuild switch";
+            docker = "podman";
         };
         history = {
             size = 10000;
