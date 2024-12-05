@@ -25,8 +25,8 @@ in {
     };
 
     useSudo = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+      type = lib.types.str;
+      default = "false";
       description = "Determines using sudo to install k3d installation script";
     };
   };
