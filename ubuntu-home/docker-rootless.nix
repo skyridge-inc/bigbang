@@ -1,6 +1,11 @@
 # docker-rootless.nix
 { config, pkgs, ... }: {
     # Install and config docker rootless
+    #
+    # WARNING!!!!!
+    # NEED TO RUN "sudo apt-get install uidmap"
+    # REF:  https://github.com/NixOS/nixpkgs/issues/138423
+    #
     services.podman = {
         enable = true;
         # Create a `docker` alias for podman, to use it as a drop-in replacement
