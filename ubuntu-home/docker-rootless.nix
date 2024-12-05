@@ -19,11 +19,11 @@ in
 
   # Create required directories with proper permissions using home.file
   home.file.".local/share/docker" = {
-    directory = true;
+    isDir = true;
     mode = "0700";
   };
   home.file.".config/docker" = {
-    directory = true;
+    isDir = true;
     mode = "0700";
   };
 
