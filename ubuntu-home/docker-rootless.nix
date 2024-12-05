@@ -13,7 +13,7 @@ in
 
   # Set necessary environment variables
   home.sessionVariables = {
-    DOCKER_HOST = "unix://${XDG_RUNTIME_DIR}/docker.sock";
+    DOCKER_HOST = ''unix://$XDG_RUNTIME_DIR/docker.sock'';
     PATH = "${dockerRootlessExtras}/bin:${docker}/bin:${config.home.sessionVariables.PATH}";
   };
 
