@@ -1,4 +1,4 @@
-# oh-my-zsh.nix
+# docker 
 { config, pkgs, ... }: {
     # Install and config zsh
     virtualisation.docker.rootless = {
