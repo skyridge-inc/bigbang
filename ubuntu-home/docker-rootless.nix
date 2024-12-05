@@ -17,11 +17,15 @@ in
     PATH = "${dockerRootlessExtras}/bin:${docker}/bin:${config.home.sessionVariables.PATH}";
   };
 
-  # Create required directories with proper permissions
-  home.createDirs = [
-    { path = "${config.home.homeDirectory}/.local/share/docker"; mode = "0700"; }
-    { path = "${config.home.homeDirectory}/.config/docker"; mode = "0700"; }
-  ];
+  # Create required directories with proper permissions using home.file
+  home.file.".local/share/docker" = {
+    directory = true;
+    mode = "0700";
+  };
+  home.file.".config/docker" = {
+    directory = true;
+    mode = "0700";
+  };
 
   # Configure Docker daemon settings
   xdg.configFile."docker/daemon.json".text = ''
