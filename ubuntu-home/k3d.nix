@@ -1,15 +1,33 @@
-{ pkgs, ... }: {
- 
-  # By declaring directly their package name.
-  # Using this way will only install the package.
-  home.packages = with pkgs; [
-    k3d
-  ];
- 
-  # Sometimes, there's an option for that. You can check directly in https://mynixos.com.
-  # You can use this syntax if you want to use default options set by home-manager or if
-  # some other package needs to know if your package is enabled or not (e.g. stylix).
-  programs.k3d = {
-    enable = true;
+{ pkgs, lib, ... }:
+
+let
+  # Define the k3d package
+  k3d = pkgs.stdenv.mkDerivation rec {
+    pname = "k3d";
+    version = "5.4.8";  # Replace with the desired version
+
+    # Fetch the k3d binary
+    src = pkgs.fetchurl {
+      url = "https://github.com/k3d-io/k3d/releases/download/v${version}/k3d-linux-amd64";
+      sha256 = "0ys1wh24dl7gql4i5srjpamcf2nhsqsbs5z4i0b72h5a57fv9m6w";  # Update with the correct sha256
+    };
+
+    # Installation steps
+    installPhase = ''
+      mkdir -p $out/bin
+      install -m755 $src $out/bin/k3d
+    '';
+
+    # Package metadata
+    meta = with lib; {
+      description = "Helper to run Rancher Lab's k3s in Docker";
+      homepage = "https://github.com/k3d-io/k3d";
+      license = licenses.mit;
+      platforms = platforms.linux;
+    };
   };
+in
+{
+  # Add k3d to your user's packages
+  home.packages = [ k3d ];
 }
