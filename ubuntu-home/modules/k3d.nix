@@ -41,8 +41,10 @@ in {
       export INSTALL_DIR="${cfg.installDir}"
 
       if [ "${cfg.version}" != "latest" ]; then
-        TAG="${cfg.version}" ${pkgs.curl}/bin/curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh \
+        TAG="${cfg.version}" ${pkgs.bashInteractive}/bin/curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh \
           | ${pkgs.bashInteractive}/bin/bash
+#        TAG="${cfg.version}" ${pkgs.curl}/bin/curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh \
+#          | ${pkgs.bashInteractive}/bin/bash
       else
         ${pkgs.curl}/bin/curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh \
           | ${pkgs.bashInteractive}/bin/bash
