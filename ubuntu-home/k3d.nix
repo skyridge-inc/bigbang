@@ -9,7 +9,7 @@ let
     # Fetch the k3d binary
     src = pkgs.fetchurl {
       url = "https://github.com/k3d-io/k3d/releases/download/v${version}/k3d-linux-amd64";
-      sha256 = "0ys1wh24dl7gql4i5srjpamcf2nhsqsbs5z4i0b72h5a57fv9m6w";  # Update with the correct sha256
+#      sha256 = "0ys1wh24dl7gql4i5srjpamcf2nhsqsbs5z4i0b72h5a57fv9m6w";  # Update with the correct sha256
     };
 
     # Installation steps
