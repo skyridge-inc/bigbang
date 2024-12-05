@@ -24,6 +24,7 @@
           ./home.nix
           ./git.nix
           ./zsh.nix
+          ./docker.nix
         ];
 
         # Optionally use extraSpecialArgs
