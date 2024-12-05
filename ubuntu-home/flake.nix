@@ -24,7 +24,7 @@
           ./home.nix
           ./git.nix
           ./zsh.nix
-          ./docker.nix
+          ./docker-rootless.nix
         ];
 
         # Optionally use extraSpecialArgs
