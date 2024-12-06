@@ -22,7 +22,7 @@
 
     home.packages = [
         pkgs.docker
-    ]
+    ];
 
     # You can optionally set up environment variables or other configurations to work with Docker
     # environment.variables.PODMAN_SOCKET = "/var/run/docker.sock";  # Ensure it's available in the environment
