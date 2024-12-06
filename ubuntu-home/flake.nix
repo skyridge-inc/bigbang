@@ -36,6 +36,8 @@
           ./kubectl.nix
           # STEP 9/10:  Install kustomize
           ./kustomize.nix
+          # STEP 11/12:  Install helm
+          ./helm.nix
         ];
 
         # Optionally use extraSpecialArgs
