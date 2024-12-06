@@ -44,7 +44,8 @@ in {
       set -euo pipefail
 
       mkdir -p "${cfg.installDir}"
-      export INSTALL_DIR="${cfg.installDir}"
+      # Used by the k3d install bash shell script:  K3D_INSTALL_DIR, USE_SUDO
+      export K3D_INSTALL_DIR="${cfg.installDir}"
       export USE_SUDO="${cfg.useSudo}"
 
       if [ "${cfg.version}" != "latest" ]; then
