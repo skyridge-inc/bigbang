@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  dog = "cat"
+  dog = "cat";
 #  howdyCmd = pkgs.writeShellScriptBin "howdy" ''
 #    echo "Howdy, partner"
 #  '';
