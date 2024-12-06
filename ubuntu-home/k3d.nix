@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./modules/k3d.nix
+    ./modules/k3dpkg.nix
   ];
 
-  programs.k3d.enable = true;
+  # programs.k3d.enable = true;
   # Optionally specify a version:
-  programs.k3d.version = "v5.7.5";
+  # programs.k3d.version = "v5.7.5";
 }
