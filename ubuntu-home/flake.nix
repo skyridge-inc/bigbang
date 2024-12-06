@@ -14,6 +14,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      current_user = home.username;
     in {
       homeConfigurations."ubuntu" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
