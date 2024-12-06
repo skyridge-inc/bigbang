@@ -29,7 +29,7 @@
           # STEP 1:  Install git
           ./git.nix
           # STEP 2/3/4:  Install podman (not docker) and alias docker to podman
-          ./docker-rootless.nix
+          ./podman-rootless.nix
           # STEP 5/6:  Install k3d
           ./k3d.nix
           # STEP 7/8:  Install kubectl

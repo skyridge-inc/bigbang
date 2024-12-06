@@ -1,21 +1,46 @@
-# docker-rootless.nix
-{ config, pkgs, ... }: {
-    # Install and config docker rootless
-    #
-    # WARNING!!!!!
-    # NEED TO RUN "sudo apt-get install uidmap"
-    # REF:  https://github.com/NixOS/nixpkgs/issues/138423
-    #
-    services.podman = {
-        enable = true;
-        # Create a `docker` alias for podman, to use it as a drop-in replacement
-        # dockerCompat = true;
-        # Required for containers under podman compose to be able to talk to each other.
-        # defaultNetwork.settings.dns_enabled = true;
+{ config, pkgs, ... }:
 
-        # Optional: Automatically add your user to the docker group
-        # This requires you to log out and back in for group changes to take effect
-        # userGroups = [ "docker" ];
+{
+  # Install the necessary packages.
+  home.packages = [
+    pkgs.docker
+    pkgs.rootlesskit
+    pkgs.slirp4netns
+  ];
+
+  # Create directories for the runtime socket.
+  home.file = {
+    ".docker".directories = {
+      create = true;
+      # Mode, owner, group can be adjusted if needed.
     };
+    ".docker/run".directories = {
+      create = true;
+    };
+  };
 
+  # Define the user-level systemd service for rootless Docker.
+  systemd.user.services.docker = {
+    WantedBy = [ "default.target" ];
+    After = [ "network-online.target" ];
+    Service = {
+      Environment = {
+        # The runtime directory for the rootless Docker socket
+        XDG_RUNTIME_DIR = "${config.home.homeDirectory}/.docker/run";
+        DOCKER_HOST = "unix://${config.home.homeDirectory}/.docker/run/docker.sock";
+      };
+      ExecStartPre = "${pkgs.docker}/bin/dockerd-rootless-setuptool.sh install";
+      ExecStart = "${pkgs.docker}/bin/dockerd-rootless.sh --experimental";
+      KillMode = "process";
+      Delegate = true;
+      Type = "notify";
+      Restart = "on-failure";
+    };
+  };
+
+  # Optionally set environment variables globally for convenience.
+  # This ensures the Docker client knows where the daemon socket is.
+  programs.bash.initExtra = ''
+    export DOCKER_HOST=unix://${HOME}/.docker/run/docker.sock
+  '';
 }
