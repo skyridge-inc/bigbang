@@ -28,17 +28,17 @@
           # PRE-INSTALL:  Install zsh with oh-my-zsh and plugins  YEA!
           ./zsh.nix
           # STEP 1:  Install git
-          ./git.nix
+#          ./git.nix
           # STEP 2/3/4:  Install podman (not docker) and alias docker to podman
-          ./podman-rootless.nix
+#          ./podman-rootless.nix
           # STEP 5/6:  Install k3d
-          ./k3d.nix
+#          ./k3d.nix
           # STEP 7/8:  Install kubectl
-          ./kubectl.nix
+#          ./kubectl.nix
           # STEP 9/10:  Install kustomize
-          ./kustomize.nix
+#          ./kustomize.nix
           # STEP 11/12:  Install helm
-          ./helm.nix
+#          ./helm.nix
         ];
 
         # Optionally use extraSpecialArgs
