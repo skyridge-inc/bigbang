@@ -79,4 +79,15 @@
 
   # zsh
   #programs.zsh.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    dotDir = ".config/zsh";
+    # enableAutosuggestions = true;
+    enableCompletion = true;
+    shellAliases = {
+      l = "ls -la";
+    };
+  };
 }
