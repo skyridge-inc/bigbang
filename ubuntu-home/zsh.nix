@@ -4,12 +4,14 @@
     programs.zsh = {
         enable = true;
         enableCompletion = true;
-        # autosuggestions.enable = true;
+#        autosuggestions.enable = true;
         syntaxHighlighting.enable = true;
+
 
         shellAliases = {
             ll = "ls -l";
             update = "sudo nixos-rebuild switch";
+            hi = "echo Howdy there";
 #            docker = "podman";
         };
         history = {
@@ -24,4 +26,8 @@
         };
     };
 
+    home.activation.changeShell = {
+        enable = true;
+        shell = "${pkgs.zsh}/bin/zsh";
+    };
 }

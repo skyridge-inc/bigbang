@@ -26,7 +26,7 @@
           # PRE-INSTALL:  Install home-manager nix pkg
           ./home.nix
           # PRE-INSTALL:  Install zsh with oh-my-zsh and plugins  YEA!
-          ./zsh.nix
+#          ./zsh.nix
           # STEP 1:  Install git
 #          ./git.nix
           # STEP 2/3/4:  Install podman (not docker) and alias docker to podman

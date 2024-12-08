@@ -15,6 +15,9 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  # Include zsh and oh-my-zsh!
+  # imports = [ ./zsh.nix ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -73,4 +76,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # zsh
+  #programs.zsh.enable = true;
 }
