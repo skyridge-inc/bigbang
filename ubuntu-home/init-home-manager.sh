@@ -1,5 +1,6 @@
 #!/bin/bash
 
-nix run home-manager/master -- init --switch .
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 
-home-manager switch --flake .
+nix-shell '<home-manager>' -A install

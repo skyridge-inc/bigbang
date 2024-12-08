@@ -10,7 +10,7 @@ sudo printf "build-users-group = nixbld\nexperimental-features = nix-command fla
 
 
 # WARNING:  Must manually install uidmap PRIOR to installing podman via home-manager
-sudo apt-get update && sudo apt-get install uidmap
+sudo apt-get update && sudo apt-get install -y uidmap
 
 # REF: https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/guides/deployment-scenarios/quickstart.md#step-1-provision-a-virtual-machine
 #
